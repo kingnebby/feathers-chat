@@ -1,5 +1,6 @@
 import * as feathersAuthentication from '@feathersjs/authentication';
 import * as local from '@feathersjs/authentication-local';
+import logger from '../../logger';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = feathersAuthentication.hooks;
@@ -31,7 +32,7 @@ export default {
   },
 
   error: {
-    all: [],
+    all: [ logError ],
     find: [],
     get: [],
     create: [],
@@ -40,3 +41,8 @@ export default {
     remove: []
   }
 };
+
+function logError(error: Error) {
+  logger.error('error', { error });
+
+}

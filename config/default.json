@@ -33,7 +33,7 @@
       "google": {
         "key": "GOOGLE_KEY",
         "secret": "GOOGLE_SECRET",
-        "scope": "",
+        "scope": ["openid", "email"],
         "nonce": true
       }
     }

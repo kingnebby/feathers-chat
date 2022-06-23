@@ -10,6 +10,7 @@ interface UserData {
   name?: string
   avatar?: string
   githubId?: string
+  googleId?: string
 }
 
 export class Users extends Service<UserData> {
@@ -19,13 +20,14 @@ export class Users extends Service<UserData> {
   }
 
   create(data: UserData, params?: Params) {
-    const {email, name, password, githubId} = data;
+    const {email, name, password, githubId, googleId} = data;
     const avatar = data.avatar || getGravatar(email);
     const userData = {
       email,
       name,
       password,
       githubId,
+      googleId,
       avatar
     };
     return super.create(userData, params);
