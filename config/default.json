@@ -9,11 +9,8 @@
   "authentication": {
     "entity": "user",
     "service": "users",
-    "secret": "DbzQWYA/AgtYG0DXtwRJRe7oAkc=",
-    "authStrategies": [
-      "jwt",
-      "local"
-    ],
+    "secret": "JWT_SECRET",
+    "authStrategies": ["jwt", "local"],
     "jwtOptions": {
       "header": {
         "typ": "access"
@@ -30,8 +27,14 @@
     "oauth": {
       "redirect": "/",
       "github": {
-        "key": "c3bf83971fd8c99e73fd",
-        "secret": "87abf031c35c2a0bf1325e62c1d3609d1d7fa877"
+        "key": "GITHUB_KEY",
+        "secret": "GITHUB_SECRET"
+      },
+      "google": {
+        "key": "GOOGLE_KEY",
+        "secret": "GOOGLE_SECRET",
+        "scope": "",
+        "nonce": true
       }
     }
   },

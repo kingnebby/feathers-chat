@@ -1,3 +1,7 @@
 # Notes
 
-https://docs.feathersjs.com/guides/basics/authentication.html#github-login-oauth
+Completed the simple tutorial.
+
+Next:
+
+- Wire up to [Google](https://docs.feathersjs.com/cookbook/authentication/google.html#application-client-and-secret)
