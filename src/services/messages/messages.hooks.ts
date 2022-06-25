@@ -1,6 +1,7 @@
 import * as authentication from '@feathersjs/authentication';
 import processMessage from '../../hooks/process-message';
 import populateUser from '../../hooks/populate-user';
+import { commonErrorHandler } from '../error-handler';
 
 const { authenticate } = authentication.hooks;
 
@@ -26,7 +27,7 @@ export default {
   },
 
   error: {
-    all: [],
+    all: [commonErrorHandler],
     find: [],
     get: [],
     create: [],
