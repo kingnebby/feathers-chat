@@ -62,6 +62,7 @@
     "cors": "^2.8.5",
     "dotenv-cli": "^5.1.0",
     "feathers-nedb": "^6.0.0",
+    "feathers-swagger": "^1.2.2",
     "helmet": "^4.6.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.3.3"

@@ -8,6 +8,7 @@ import feathers from '@feathersjs/feathers';
 import configuration from '@feathersjs/configuration';
 import express from '@feathersjs/express';
 import socketio from '@feathersjs/socketio';
+import swagger from 'feathers-swagger';
 
 import { Application } from './declarations';
 import logger from './logger';
@@ -43,6 +44,16 @@ app.use('/', express.static(app.get('public')));
 // Set up Plugins and providers
 app.configure(express.rest());
 app.configure(socketio());
+app.configure(swagger({
+  specs: {
+    info: {
+      title: 'titley',
+      version: '1.0.0'
+    }
+  },
+  openApiVersion: 3,
+  uiIndex: true
+}));
 
 // Configure other middleware (see `middleware/index.ts`)
 app.configure(middleware);
