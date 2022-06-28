@@ -11,8 +11,8 @@ export default {
     find: [],
     get: [],
     create: [processMessage()],
-    update: [],
-    patch: [],
+    update: [processMessage()],
+    patch: [processMessage()],
     remove: []
   },
 
