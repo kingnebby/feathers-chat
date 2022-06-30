@@ -5,7 +5,7 @@ const logger = createLogger({
   // To see more detailed errors, change this to 'debug'
   level: 'debug',
   format: format.combine(
-    // format.splat(),
+    format.splat(),
     // format.simple()
     format.json({space: 1}),
   ),

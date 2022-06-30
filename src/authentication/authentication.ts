@@ -3,11 +3,13 @@ import { LocalStrategy } from '@feathersjs/authentication-local';
 import { expressOauth } from '@feathersjs/authentication-oauth';
 import { ServiceAddons } from '@feathersjs/feathers';
 
-import { GitHubStrategy } from './authentication/GitHubStrategy';
-import { GoogleStrategy } from './authentication/GoogleStrategy';
-import { Application } from './declarations';
+import { GitHubStrategy } from './GitHubStrategy';
+import { GoogleStrategy } from './GoogleStrategy';
+import { Application } from '../declarations';
+import hooks from './authen.hooks';
 
-declare module './declarations' {
+
+declare module '../declarations' {
   interface ServiceTypes {
     'authentication': AuthenticationService & ServiceAddons<any>;
   }
@@ -25,5 +27,10 @@ export default function(app: Application): void {
 
   // Here we bind the authentication service to the endpoint `authentication`
   app.use('/authentication', authentication);
+
+  // register hooks
+  const service = app.service('authentication');
+  service.hooks(hooks);
+
   app.configure(expressOauth());
 }

@@ -1,4 +1,4 @@
-import { Id, Params } from '@feathersjs/feathers';
+import { Id, NullableId, Params } from '@feathersjs/feathers';
 import { Service, NedbServiceOptions } from 'feathers-nedb';
 import { VError } from 'verror';
 import { Application } from '../../declarations';
@@ -17,4 +17,8 @@ export class Messages extends Service {
 
     return this._update(id, data, params);
   }
+
+  // async patch(id: NullableId, data: Partial<any>, params?: Params | undefined): Promise<any> {
+
+  // }
 }

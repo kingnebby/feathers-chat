@@ -9,7 +9,7 @@ export const commonErrorHandler: Hook = function commonErrorHandler(ctx) {
     if (!ctx.error.code) {
       const newError = new errors.GeneralError('server error');
       // TODO: not actually helpful.
-      logger.error('error in some hook', {error, stack: VError.fullStack(error)});
+      logger.error('error in some hook', {error, stack: VError.fullStack(ctx.error)});
       ctx.error = newError;
       return ctx;
     }

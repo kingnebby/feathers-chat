@@ -9,6 +9,7 @@ import configuration from '@feathersjs/configuration';
 import express from '@feathersjs/express';
 import socketio from '@feathersjs/socketio';
 import swagger from 'feathers-swagger';
+import casl from 'feathers-casl';
 
 import { Application } from './declarations';
 import logger from './logger';
@@ -17,8 +18,7 @@ import services from './services';
 import appHooks from './app.hooks';
 import channels from './channels';
 import { HookContext as FeathersHookContext } from '@feathersjs/feathers';
-import authentication from './authentication';
-// Don't remove this comment. It's needed to format import lines nicely.
+import authentication from './authentication/authentication';
 
 const app: Application = express(feathers());
 export type HookContext<T = any> = {
@@ -60,6 +60,7 @@ app.configure(middleware);
 app.configure(authentication);
 // Set up our services (see `services/index.ts`)
 app.configure(services);
+app.configure(casl());
 // Set up event channels (see channels.ts)
 app.configure(channels);
 

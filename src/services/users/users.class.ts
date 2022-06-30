@@ -3,28 +3,46 @@ import { Params } from '@feathersjs/feathers';
 import { Service, NedbServiceOptions } from 'feathers-nedb';
 import { Application } from '../../declarations';
 
-interface UserData {
-  _id?: string;
-  email: string;
+export type UserRole = 'admin' | 'super_admin' | 'user'
+
+export interface UserModelType {
+  _id: string
+  email: string
   password: string
+  // This should probably be in its own db model
+  role:  {
+    name: UserRole
+  }
   name?: string
   avatar?: string
   githubId?: string
   googleId?: string
 }
 
-export class Users extends Service<UserData> {
+// email, password is the only thing required??
+export interface NewUser extends Partial<UserModelType> {
+  email: string
+  password: string
+}
+
+// This is actually the "Service" that gets its
+// CRUD default methods from feathers, and we can add our own
+// atop that.
+export class Users extends Service<UserModelType> {
   //eslint-disable-next-line @typescript-eslint/no-unused-vars
   constructor(options: Partial<NedbServiceOptions>, app: Application) {
     super(options);
   }
 
-  create(data: UserData, params?: Params) {
+  create(data: NewUser, params?: Params) {
     const {email, name, password, githubId, googleId} = data;
     const avatar = data.avatar || getGravatar(email);
-    const userData = {
+    const userData: NewUser = {
       email,
       name,
+      role: {
+        name: 'user'
+      },
       password,
       githubId,
       googleId,

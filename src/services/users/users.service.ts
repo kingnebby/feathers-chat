@@ -12,6 +12,7 @@ declare module '../../declarations' {
   }
 }
 
+// This just wires up a service to an endpoint
 export default function (app: Application): void {
   const options = {
     Model: createModel(app),
